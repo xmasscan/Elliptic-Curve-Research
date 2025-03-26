@@ -64,6 +64,7 @@ def print_weierstrass(a):
 
     print(weierstrass)
 
+# MAIN
 # a_1, a_3, a_2, a_4, a_6 in that order :)
 a = ["a_1","a_3","a_2","a_4","a_6"]
 weights = []
@@ -89,9 +90,13 @@ while not user_input_flag:
 print()
 
 determinant = add.calculate_determinant(weights)
+
+# If determinant is zero, terminate program with an exception.
 if determinant == 0:
     print("Determinant of specified function is zero.")
     print("Aborting...")
-else:
-    print(f"Determinant: {determinant}")
-    print("Determinant non-zero, must be legal Elliptic Curve")
+    raise Exception("Determinant of Weierstrass Equation must be Non-Zero!")
+
+print(f"Determinant: {determinant}")
+print("Determinant non-zero, must be legal Elliptic Curve")
+print()
