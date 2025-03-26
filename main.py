@@ -1,6 +1,5 @@
 import addition as add
 
-
 # Pretty Weierstrass Equation printing
 def print_weierstrass(a):
     # All terms zeroable by respective weights
@@ -100,3 +99,13 @@ if determinant == 0:
 print(f"Determinant: {determinant}")
 print("Determinant non-zero, must be legal Elliptic Curve")
 print()
+
+# addition
+
+x1 = int(input("x1:"))
+y1 = int(input("y1:"))
+x2 = int(input("x2:"))
+y2 = int(input("y2:"))
+point = add.add_points(weights,x1,y1,x2,y2)
+
+print(f"P3 = {point[0]},{point[1]}")

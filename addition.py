@@ -53,7 +53,7 @@ def calculate_determinant(a):
 # a_2 = a[2]
 # a_4 = a[3]
 # a_6 = a[4]
-def add_points(a, x1: frac.Fraction, y1: frac.Fraction, x2: frac.Fraction, y2: frac.Fraction):
+def add_points(a, x1: int, y1: int, x2:int, y2:int):
     if x1 == x2:
         l_num = 3 * pow(x1,2) + 2 * a[2] * x1 + a[3] - a[0] * y1
         l_denom = 2 * y1 + a[0] * x1 + a[1]
@@ -63,12 +63,12 @@ def add_points(a, x1: frac.Fraction, y1: frac.Fraction, x2: frac.Fraction, y2: f
         v_denom = 2 * y1 + a[0] * x1 + a[1]
         v = frac.Fraction(v_num, v_denom)
     else:
-        l_num = 3 * pow(x1,2) + 2 * a[2] * x1 + a[3] - a[0] * y1
-        l_denom = 2 * y1 + a[0] * x1 + a[1]
+        l_num = y2 - y1
+        l_denom = x2 - x1
         l = frac.Fraction(l_num,l_denom)
 
-        v_num = -1 * pow(x1,3) + a[3] * x1 + 2 * a[4] - a[1] * y1
-        v_denom = 2 * y1 + a[0] * x1 + a[1]
+        v_num = y1 * x2 - y2 * x1
+        v_denom = x2 - x1
         v = frac.Fraction(v_num, v_denom)
 
     x3 = pow(l,2) + a[0] * l - a[2] - x1 - x2
