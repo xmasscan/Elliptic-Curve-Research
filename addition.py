@@ -53,7 +53,7 @@ def calculate_determinant(a):
 # a_2 = a[2]
 # a_4 = a[3]
 # a_6 = a[4]
-def add_points(a, x1: int, y1: int, x2:int, y2:int):
+def add_points(a, x1: frac.Fraction, y1: frac.Fraction, x2: frac.Fraction, y2: frac.Fraction):
     if x1 == x2:
         l_num = 3 * pow(x1,2) + 2 * a[2] * x1 + a[3] - a[0] * y1
         l_denom = 2 * y1 + a[0] * x1 + a[1]
@@ -83,10 +83,9 @@ def check_order(a, x: frac.Fraction, y: frac.Fraction):
 
     # Add point to itself 16 times OR until point == [0,0] i.e. "Point at Infinity"
     for i in range(0,16):
-        point = add_points(a,point[0],point[1],x,y)
-        if(point[0] == 0 and point[1] == 0):
-            # Returns the point's order
-            # Not neccesary for calculation but does allow you to collect more data :)
+        try:
+            point = add_points(a,point[0],point[1],x,y)
+        except Exception as e:
             return i
     
     # If code is still running, loop terminated without returning.

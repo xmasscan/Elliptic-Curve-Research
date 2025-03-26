@@ -1,4 +1,5 @@
 import addition as add
+import fractions as frac
 
 # Pretty Weierstrass Equation printing
 def print_weierstrass(a):
@@ -55,7 +56,7 @@ def print_weierstrass(a):
             weierstrass += f" {abs(a[3])}x"
 
     if a[4] != 0:
-        if a[3] < 0:
+        if a[4] < 0:
             weierstrass += " -"
         else:
             weierstrass += " +"
@@ -121,8 +122,8 @@ while(not quit_flag):
     match choice:
         case "1":
             x1, y1 = [i for i in input("Enter the x and y coordinates of P1 seperated by a space: ").split()]
-            x1 = int(x1)
-            y1 = int(y1)
+            x1 = frac.Fraction(x1)
+            y1 = frac.Fraction(y1)
             print(f"P1 = ({x1},{y1})")
             x2, y2 = [i for i in input("Enter the x and y coordinates of P1 seperated by a space: ").split()]
             x2 = int(x2)
@@ -133,6 +134,15 @@ while(not quit_flag):
             print(f"P1 + P2 = P3 = ({P3[0]},{P3[1]})")
             input("Enter to continue...")
             print()
+        case "2":
+            x, y = [i for i in input("Input the x-y coordinates of a point on th Elliptic Curve sperated by a space: ").split()]
+            x = frac.Fraction(x)
+            y = frac.Fraction(y)
+            order = add.check_order(weights,x,y)
+            if order == -1:
+                print("Point is of Infinite Order!")
+            else:
+                print(f"Point has an order of {order}!")
         case "q":
             print("Exiting...")
             quit_flag = True
