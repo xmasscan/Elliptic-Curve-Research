@@ -100,12 +100,41 @@ print(f"Determinant: {determinant}")
 print("Determinant non-zero, must be legal Elliptic Curve")
 print()
 
-# addition
+# Curve Chosen
+# Set up interaction with the curve!
 
-x1 = int(input("x1:"))
-y1 = int(input("y1:"))
-x2 = int(input("x2:"))
-y2 = int(input("y2:"))
-point = add.add_points(weights,x1,y1,x2,y2)
+# This section of code will run until an error is risen or user chooses to quit!
+# This is Python so performance isn't *too* prioritized. while not reads more intuitive...
+quit_flag = False
 
-print(f"P3 = {point[0]},{point[1]}")
+while(not quit_flag):
+    print("Operating on Weierstrass Equation:")
+    print_weierstrass(weights)
+    print()
+
+    print("Operations:")
+    print("1. Add Two Points")
+    print("2. Determine the Order of an Individual Point")
+    print("Enter \"q\" to exit.")
+    choice = input("Choice: ")
+
+    match choice:
+        case "1":
+            x1, y1 = [i for i in input("Enter the x and y coordinates of P1 seperated by a space: ").split()]
+            x1 = int(x1)
+            y1 = int(y1)
+            print(f"P1 = ({x1},{y1})")
+            x2, y2 = [i for i in input("Enter the x and y coordinates of P1 seperated by a space: ").split()]
+            x2 = int(x2)
+            y2 = int(y2)
+            print(f"P2 = ({x2},{y2})")
+            P3 = add.add_points(weights,x1,y1,x2,y2) 
+            print()
+            print(f"P3 = ({P3[0]},{P3[1]})")
+            input("Enter to continue...")
+            print()
+        case "q":
+            print("Exiting...")
+            quit_flag = True
+        case _:
+            print("Invalid Input. Try again!")
