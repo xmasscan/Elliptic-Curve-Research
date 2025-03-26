@@ -130,7 +130,7 @@ while(not quit_flag):
             print(f"P2 = ({x2},{y2})")
             P3 = add.add_points(weights,x1,y1,x2,y2) 
             print()
-            print(f"P3 = ({P3[0]},{P3[1]})")
+            print(f"P1 + P2 = P3 = ({P3[0]},{P3[1]})")
             input("Enter to continue...")
             print()
         case "q":
