@@ -73,5 +73,22 @@ def add_points(a, x1: frac.Fraction, y1: frac.Fraction, x2: frac.Fraction, y2: f
 
     x3 = pow(l,2) + a[0] * l - a[2] - x1 - x2
     y3 = -(l + a[0]) * x3 - v - a[1]
-    point = (x3,y3)
+    point = [x3,y3]
     return point
+
+# Add a point to itself.
+#
+def check_order(a, x: frac.Fraction, y: frac.Fraction):
+    point = [x,y]
+
+    # Add point to itself 16 times OR until point == [0,0] i.e. "Point at Infinity"
+    for i in range(0,16):
+        point = add_points(a,point[0],point[1],x,y)
+        if(point[0] == 0 and point[1] == 0):
+            # Returns the point's order
+            # Not neccesary for calculation but does allow you to collect more data :)
+            return i
+    
+    # If code is still running, loop terminated without returning.
+    # Therfore, Order of point is not <= 16 and thusly must be infinite.
+    return -1
