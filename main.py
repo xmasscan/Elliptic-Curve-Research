@@ -9,34 +9,58 @@ def print_weierstrass(a):
     weierstrass = "y^2" 
     # if a_1 != 0
     if a[0] != 0:
-        # just print the term if a_1 = 1
-        if a[0] == 1:
-            weierstrass += " + xy"
+        # plus or minux sign printing (-x looks nicer than + -x)
+        if a[0] < 0:
+            weierstrass += " -"
         else:
-            weierstrass += f" + {a[0]}xy"
+            weierstrass += " +"
+        # just print the term if a_1 = 1
+        if abs(a[0]) == 1:
+            weierstrass += " xy"
+        else:
+            weierstrass += f" {abs(a[0])}xy"
     # a_3 handling
     if a[1] != 0:
-        # just print the term if a_1 = 1
-        if a[1] == 1:
-            weierstrass += " + y"
+        if a[1] < 0:
+            weierstrass += " -"
         else:
-            weierstrass += f" + {a[1]}y"
+            weierstrass += " +"
+        # just print the term if a_1 = 1
+        if abs(a[1]) == 1:
+            weierstrass += " y"
+        else:
+            weierstrass += f" {abs(a[1])}y"
 
     # left side complete, begin right side
     weierstrass += " = x^3"
 
     if a[2] != 0:
-        if a[2] == 1:
-            weierstrass += " + x^2"
+        if a[2] < 0:
+            weierstrass += " -"
         else:
-            weierstrass += f" + {a[2]}x^2"
-    if a[3] != 0:
-        if a[3] == 1:
-            weierstrass += " + x"
+            weierstrass += " +"
+
+        if abs(a[2]) == 1:
+            weierstrass += " x^2"
         else:
-            weierstrass += f" + {a[3]}x"
+            weierstrass += f" {abs(a[2])}x^2"
+    if a[3] != 0: 
+        if a[3] < 0:
+            weierstrass += " -"
+        else:
+            weierstrass += " +"
+
+        if abs(a[3]) == 1:
+            weierstrass += " x"
+        else:
+            weierstrass += f" {abs(a[3])}x"
+
     if a[4] != 0:
-        weierstrass += f" + {a[4]}"
+        if a[3] < 0:
+            weierstrass += " -"
+        else:
+            weierstrass += " +"
+        weierstrass += f" {abs(a[4])}"
 
     print(weierstrass)
 
