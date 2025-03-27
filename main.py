@@ -141,8 +141,12 @@ while(not quit_flag):
             order = add.check_order(weights,x,y)
             if order == -1:
                 print("Point is of Infinite Order!")
+            elif order == 0:
+                print("Point is a Torsion Point!")
             else:
                 print(f"Point has an order of {order}!")
+            print()
+            input("Enter to contnue...")
         case "q":
             print("Exiting...")
             quit_flag = True
